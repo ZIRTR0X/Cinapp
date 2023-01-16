@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.cinapp.model.Movie
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,5 +33,25 @@ class MainActivity : AppCompatActivity() {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
+
+        /*companion object {
+            fun fromJson(json: JSONObject): Movie {
+                return Movie(
+                    json.getInt("id"),
+                    json.getString("name"),
+                    json.getString("backdrop_path"),
+                    json.getString("release_date"),
+                    json.getJSONArray("origin_country").toList(),
+                    json.getString("original_language"),
+                    json.getString("original_name"),
+                    json.getString("overview"),
+                    json.getDouble("popularity"),
+                    json.getString("poster_path"),
+                    json.getDouble("vote_average"),
+                    json.getInt("vote_count"),
+                    json.getJSONArray("genre_ids").toList()
+                )
+            }
+        }*/
     }
 }
