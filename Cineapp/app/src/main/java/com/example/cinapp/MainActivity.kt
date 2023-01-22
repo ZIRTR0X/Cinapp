@@ -5,49 +5,39 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
+import androidx.fragment.app.Fragment
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.cinapp.databinding.ActivityMainBinding
 import com.example.cinapp.model.Movie
-import com.example.cinapp.navigation.MainScreen
+import com.example.cinapp.navigation.MovieFragment
+import com.example.cinapp.navigation.SearchFragment
+import com.example.cinapp.navigation.SerieFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        setContent {
-            MaterialTheme { MainScreen() }
-        }
-        /*
-        // TextView
-        val textView = findViewById<TextView>(R.id.text)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        replaceFragment(MovieFragment())
 
-        // Instantiate the RequestQueue.
-        val queue = Volley.newRequestQueue(this)
-        val url = "https://api.themoviedb.org/3/search/tv?api_key=e53e59cf1e29b9afff93d9ca1208f0cf&query=One%20Piece&language=fr"
-
-        // Request a string response from the provided URL.
-        val stringRequest = StringRequest(url,
-            { response ->
-                // Display the first 500 characters of the response string.
-                textView.text = "Response is: ${response.substring(0, 500)}"
-            },
-            { error: VolleyError ->
-                textView.text = "That didn't work!"
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.movie -> replaceFragment(MovieFragment())
+                R.id.serie -> replaceFragment(SerieFragment())
+                R.id.search -> replaceFragment(SearchFragment())
+                else -> false
             }
-        )
+            true
+        }
+    }
 
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest)
-
-
-        //bottom navigation with jetpack compose
-
-        */
-
-
-
-
+    private fun replaceFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit()
     }
 }
