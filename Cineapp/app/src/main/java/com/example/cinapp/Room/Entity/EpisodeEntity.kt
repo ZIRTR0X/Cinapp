@@ -11,7 +11,8 @@ data class EpisodeEntity (
         var stillPath: String,
         var episodeNumber: Int,
         var seasonNumber: Int,
-        var airDate: String,
+        val releaseDate: String,
         var voteAverage: Double,
-        var voteCount: Int
+        var voteCount: Int,
+        var runtime: Int
 )

@@ -10,5 +10,6 @@ data class SeasonEntity (
     var overview: String,
     var posterPath: String,
     var seasonNumber: Int,
-    var episodesIds: List<Int>
+    var episodesIds: List<Int>,
+    val releaseDate: String
 )

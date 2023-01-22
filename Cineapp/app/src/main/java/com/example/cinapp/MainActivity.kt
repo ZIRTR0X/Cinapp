@@ -3,16 +3,23 @@ package com.example.cinapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.activity.compose.setContent
+import androidx.compose.material.MaterialTheme
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.cinapp.model.Movie
+import com.example.cinapp.navigation.MainScreen
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        //setContentView(R.layout.activity_main)
+        setContent {
+            MaterialTheme { MainScreen() }
+        }
+        /*
         // TextView
         val textView = findViewById<TextView>(R.id.text)
 
@@ -34,24 +41,13 @@ class MainActivity : AppCompatActivity() {
         // Add the request to the RequestQueue.
         queue.add(stringRequest)
 
-        /*companion object {
-            fun fromJson(json: JSONObject): Movie {
-                return Movie(
-                    json.getInt("id"),
-                    json.getString("name"),
-                    json.getString("backdrop_path"),
-                    json.getString("release_date"),
-                    json.getJSONArray("origin_country").toList(),
-                    json.getString("original_language"),
-                    json.getString("original_name"),
-                    json.getString("overview"),
-                    json.getDouble("popularity"),
-                    json.getString("poster_path"),
-                    json.getDouble("vote_average"),
-                    json.getInt("vote_count"),
-                    json.getJSONArray("genre_ids").toList()
-                )
-            }
-        }*/
+
+        //bottom navigation with jetpack compose
+
+        */
+
+
+
+
     }
 }

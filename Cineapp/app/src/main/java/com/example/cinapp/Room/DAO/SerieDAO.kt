@@ -26,12 +26,4 @@ interface SerieDAO {
     @Query("SELECT * FROM serie WHERE :seasonId IN (seasonsIds)")
     fun findBySeason(seasonId: Int): SerieEntity
 
-    @Query("SELECT * FROM serie " +
-            "WHERE :episodeId IN (" +
-            "SELECT episodesIds FROM season WHERE id IN (" +
-            "SELECT seasonsIds FROM serie WHERE :episodeId IN (" +
-            "SELECT episodesIds FROM season)))")
-    fun findByEpisode(episodeId: Int): SerieEntity
-
-
 }
