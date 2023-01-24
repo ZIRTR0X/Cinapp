@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Seen Movies"
+        android:id="@+id/seen_movies"/>
+    <item android:title="Movies to see"
+        android:id="@+id/movies_to_see"/>
+</menu>
