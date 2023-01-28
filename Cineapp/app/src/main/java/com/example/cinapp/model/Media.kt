@@ -1,17 +1,19 @@
 package com.example.cinapp.model
 
-abstract class Media {
-    abstract val id: Int
-    abstract val name: String
-    abstract val backdropPath: String
-    abstract val releaseDate: String
-    abstract val originCountry: List<String>
-    abstract val originalLanguage: String
-    abstract val originalName: String
-    abstract val overview : String
-    abstract val popularity: Double
-    abstract val posterPath: String
-    abstract val voteAverage: Double
-    abstract val voteCount: Int
-    abstract val genreIds: List<Int>
+open class Media (
+    val adult: Boolean? = null,
+    val id: Int,
+    val title: String? = null,
+    val backdropPath: String? = null,
+    val releaseDate: String? = null,
+    val originCountry: List<String>? = null,
+    val originalLanguage: String? = null,
+    val originalName: String? = null,
+    val overview : String? = null,
+    val popularity: Double? = null,
+    val posterPath: String? = null,
+    val voteAverage: Double? = null,
+    val voteCount: Int? = null,
+    val genreIds: List<Int>? = null
+        ){
 }

@@ -1,4 +1,4 @@
-package com.example.cinapp.navigation
+package com.example.cinapp.model.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

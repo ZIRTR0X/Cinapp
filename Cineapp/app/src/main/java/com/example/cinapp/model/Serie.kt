@@ -1,21 +1,37 @@
 package com.example.cinapp.model
 
 class Serie(
-    override val id: Int,
-    override val name: String,
-    override val backdropPath: String,
-    override val releaseDate: String,
-    override val originCountry: List<String>,
-    override val originalLanguage: String,
-    override val originalName: String,
-    override val overview: String,
-    override val popularity: Double,
-    override val posterPath: String,
-    override val voteAverage: Double,
-    override val voteCount: Int,
-    override val genreIds: List<Int>,
-    var seasons: List<Season>,
-    var numberOfSeasons: Int,
-    var numberOfEpisodes: Int
-) : Media() {
+    adult: Boolean? = null,
+    id: Int,
+    title: String? = null,
+    backdropPath: String? = null,
+    releaseDate: String? = null,
+    originCountry: List<String>? = null,
+    originalLanguage: String? = null,
+    originalName: String? = null,
+    overview : String? = null,
+    popularity: Double? = null,
+    posterPath: String? = null,
+    voteAverage: Double? = null,
+    voteCount: Int? = null,
+    genreIds: List<Int>? = null,
+    var seasons: List<Season>? = null,
+    var numberOfSeasons: Int? = null,
+    var numberOfEpisodes: Int? = null
+) : Media(
+    adult,
+    id,
+    title,
+    backdropPath,
+    releaseDate,
+    originCountry,
+    originalLanguage,
+    originalName,
+    overview,
+    popularity,
+    posterPath,
+    voteAverage,
+    voteCount,
+    genreIds
+) {
 }

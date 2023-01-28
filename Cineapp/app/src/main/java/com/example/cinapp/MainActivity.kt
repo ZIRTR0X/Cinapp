@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.cinapp.databinding.ActivityMainBinding
-import com.example.cinapp.navigation.MovieFragment
-import com.example.cinapp.navigation.SearchFragment
-import com.example.cinapp.navigation.SerieFragment
+import com.example.cinapp.model.navigation.MovieFragment
+import com.example.cinapp.model.navigation.SearchFragment
+import com.example.cinapp.model.navigation.SerieFragment
 
 
 class MainActivity : AppCompatActivity() {
