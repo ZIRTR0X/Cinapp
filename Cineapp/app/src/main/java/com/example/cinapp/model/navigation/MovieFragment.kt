@@ -9,17 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cinapp.R
-import com.example.cinapp.Request.Demmy
-import com.example.cinapp.Request.MediaApi
-import com.example.cinapp.Request.MediaService
-import com.example.cinapp.Request.MoviesAdapter
-import com.example.cinapp.model.Media
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import com.example.cinapp.Request.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -71,6 +63,15 @@ class MovieFragment : Fragment() {
             Log.d("TAG", "onCreateView: " + listMedia)
             Log.d("Image", "onCreateView: " + listMedia[0].posterPath.toString())
             myView.text = listMedia[0].title.toString() + " " + listMedia[0].id.toString() + " " + listMedia[0].posterPath.toString()
+            //ajouter le recyclerView à la vue
+
+            val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view_movies)
+            //recyclerView.layoutManager = LinearLayoutManager(context)
+            val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+            recyclerView.layoutManager = layoutManager
+            val adapter = MediaAdapter(listMedia)
+            recyclerView.adapter = adapter
+
         }
 
         return rootView
