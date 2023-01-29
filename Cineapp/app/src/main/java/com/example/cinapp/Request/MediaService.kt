@@ -5,9 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MediaService {
-    @GET("search/movie?api_key=e53e59cf1e29b9afff93d9ca1208f0cf&query=Forrest%20Gump&language=fr")
-    fun getForrestGump(): Call<Demmy>
-
     @GET("search/multi")
     fun searchMedia(
         @Query("api_key") apiKey: String,
@@ -19,4 +16,13 @@ interface MediaService {
 
     @GET("movie/popular")
     fun getPopularMovies(@Query("api_key") apiKey: String): Call<Demmy>
+
+    @GET("tv/popular")
+    fun getPopularSeries(@Query("api_key") apiKey: String): Call<Demmy>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovie(@Query("api_key") apiKey: String): Call<Demmy>
+
+    @GET("tv/top_rated")
+    fun getTopRatedSerie(@Query("api_key") apiKey: String): Call<Demmy>
 }

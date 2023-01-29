@@ -7,13 +7,13 @@ import com.example.cinapp.model.Serie
 class MediaMapper {
     fun searchMapToMedia(mediaResponse: MediaResponse): Media {
         return when (mediaResponse.media_type) {
-            "movie" -> searchMapToMovie(mediaResponse)
-            "tv" -> searchMapToSerie(mediaResponse)
+            "movie" -> mapToMovie(mediaResponse)
+            "tv" -> mapToSerie(mediaResponse)
             else -> throw IllegalArgumentException("Invalid media type")
         }
     }
 
-    private fun searchMapToMovie(mediaResponse: MediaResponse): Movie {
+     fun mapToMovie(mediaResponse: MediaResponse): Movie {
         return Movie(
             id = mediaResponse.id,
             title = mediaResponse.title,
@@ -32,7 +32,7 @@ class MediaMapper {
         )
     }
 
-    private fun searchMapToSerie(mediaResponse: MediaResponse): Serie {
+    fun mapToSerie(mediaResponse: MediaResponse): Serie {
         return Serie(
             id = mediaResponse.id,
             title = mediaResponse.name,

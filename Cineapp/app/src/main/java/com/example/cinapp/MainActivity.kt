@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.cinapp.databinding.ActivityMainBinding
+import com.example.cinapp.model.navigation.HomeFragment
 import com.example.cinapp.model.navigation.MovieFragment
 import com.example.cinapp.model.navigation.SearchFragment
 import com.example.cinapp.model.navigation.SerieFragment
@@ -17,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(MovieFragment())
+        replaceFragment(HomeFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
+                R.id.home -> replaceFragment(HomeFragment())
                 R.id.movie -> replaceFragment(MovieFragment())
                 R.id.serie -> replaceFragment(SerieFragment())
                 R.id.search -> replaceFragment(SearchFragment())

@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Cin\'app</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="current_popular_movies">Current popular movies</string>
+    <string name="current_popular_serie">Current popular serie</string>
+    <string name="movies_in_theaters">Movies in theaters</string>
+    <string name="series_on_the_air">Series on the air</string>
+    <string name="movies_upcoming">Upcoming movies</string>
+    <string name="series_airing_today">Series airing today</string>
+    <string name="movies_top_rated">Top rated movies</string>
+    <string name="series_top_rated">Top rated series</string>
 </resources>
