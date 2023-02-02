@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item android:title="@string/home"
         android:id="@+id/home"
-        android:icon="@drawable/ic_baseline_home_24"/>/>
+        android:icon="@drawable/ic_baseline_home_24"/>
 
-    <item android:title="Movie"
+    <item android:title="@string/movie"
         android:id="@+id/movie"
         android:icon="@drawable/ic_baseline_movie_24" />
-    <item android:title="Serie"
+
+    <item android:title="@string/serie"
         android:id="@+id/serie"
         android:icon="@drawable/ic_baseline_live_tv_24" />
-    <item android:title="Search"
+
+    <item android:title="@string/search"
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24" />
 </menu>

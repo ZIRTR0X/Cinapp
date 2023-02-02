@@ -9,4 +9,13 @@
     <string name="series_airing_today">Series airing today</string>
     <string name="movies_top_rated">Top rated movies</string>
     <string name="series_top_rated">Top rated series</string>
+    <string name="seen_movies">Seen movies</string>
+    <string name="movies_to_see">Movies to see</string>
+    <string name="seen_series">Seen series</string>
+    <string name="series_to_see">Series to see</string>
+    <string name="next_releases">Next Releases</string>
+    <string name="home">Home</string>
+    <string name="movie">Movie</string>
+    <string name="serie">Serie</string>
+    <string name="search">Search</string>
 </resources>

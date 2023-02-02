@@ -19,8 +19,8 @@ class MediaAdapter(private val medias: List<Media>) : RecyclerView.Adapter<Media
         val movie = medias[position]
         Glide.with(holder.itemView.context)
             .load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
-            //.override(300) // dimensions cibles en pixels
-            .transform(RoundedCorners(40)) // 20 pixels de rayon pour les angles
+            .override(400, 600) // dimensions cibles en pixels
+            //.transform(RoundedCorners(20)) // 20 pixels de rayon pour les angles
             .into(holder.poster)
 
     }
