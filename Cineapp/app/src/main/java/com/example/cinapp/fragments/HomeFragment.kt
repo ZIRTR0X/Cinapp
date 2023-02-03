@@ -42,24 +42,23 @@ class HomeFragment : Fragment() {
         //getPopularMovies
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-        val apiKey = "e53e59cf1e29b9afff93d9ca1208f0cf"
 
-        MediaApi().getPopularMovies(apiKey) { listMedia ->
+        MediaApi().getPopularMovies() { listMedia ->
             val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_movies)
             addMediaToRecyclerView(listMedia, recyclerView)
         }
 
-        MediaApi().getPopularSeries(apiKey) { listMedia ->
+        MediaApi().getPopularSeries() { listMedia ->
             val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_series)
             addMediaToRecyclerView(listMedia, recyclerView)
         }
 
-        MediaApi().getTopRatedMovie(apiKey) { listMedia ->
+        MediaApi().getTopRatedMovie() { listMedia ->
             val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_movies)
             addMediaToRecyclerView(listMedia, recyclerView)
         }
 
-        MediaApi().getTopRatedSerie(apiKey) { listMedia ->
+        MediaApi().getTopRatedSerie() { listMedia ->
             val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_series)
             addMediaToRecyclerView(listMedia, recyclerView)
         }

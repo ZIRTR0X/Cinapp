@@ -17,8 +17,8 @@ class MediaApi {
     private val service = retrofit.create(MediaService::class.java)
     val mediaMapper = MediaMapper()
 
-    fun search(apiKey: String, language: String, query: String, page: Int, includeAdult: Boolean, callback: (List<Media>) -> Unit) {
-        val response: Call<Demmy> = service.searchMedia(apiKey, language, query, page, includeAdult)
+    fun search(query: String, page: Int, callback: (List<Media>) -> Unit) {
+        val response: Call<Demmy> = service.searchMedia(query, page)
         val listMedia: MutableList<Media> = mutableListOf()
         Log.d("TAG", "search: " + response.request().url())
 
@@ -42,8 +42,8 @@ class MediaApi {
         Log.d("Liste2", listMedia.size.toString())
     }
 
-    fun getPopularMovies(apiKey: String, callback: (List<Media>) -> Unit ) {
-        val response: Call<Demmy> = service.getPopularMovies(apiKey)
+    fun getPopularMovies(callback: (List<Media>) -> Unit ) {
+        val response: Call<Demmy> = service.getPopularMovies()
         val listMedia: MutableList<Media> = mutableListOf()
 
         response.enqueue(object : Callback<Demmy> {
@@ -63,8 +63,8 @@ class MediaApi {
         })
     }
 
-    fun getPopularSeries(apiKey: String, callback: (List<Media>) -> Unit ) {
-        val response: Call<Demmy> = service.getPopularSeries(apiKey)
+    fun getPopularSeries(callback: (List<Media>) -> Unit ) {
+        val response: Call<Demmy> = service.getPopularSeries()
         val listMedia: MutableList<Media> = mutableListOf()
 
         response.enqueue(object : Callback<Demmy> {
@@ -84,8 +84,8 @@ class MediaApi {
         })
     }
 
-    fun getTopRatedMovie(apiKey: String, callback: (List<Media>) -> Unit ) {
-        val response: Call<Demmy> = service.getTopRatedMovie(apiKey)
+    fun getTopRatedMovie(callback: (List<Media>) -> Unit ) {
+        val response: Call<Demmy> = service.getTopRatedMovie()
         val listMedia: MutableList<Media> = mutableListOf()
 
         response.enqueue(object : Callback<Demmy> {
@@ -105,8 +105,8 @@ class MediaApi {
         })
     }
 
-    fun getTopRatedSerie(apiKey: String, callback: (List<Media>) -> Unit ) {
-        val response: Call<Demmy> = service.getTopRatedSerie(apiKey)
+    fun getTopRatedSerie(callback: (List<Media>) -> Unit ) {
+        val response: Call<Demmy> = service.getTopRatedSerie()
         val listMedia: MutableList<Media> = mutableListOf()
 
         response.enqueue(object : Callback<Demmy> {

@@ -41,38 +41,8 @@ class MovieFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Récupération de la vue racine
         val rootView = inflater.inflate(R.layout.fragment_movie, container, false)
-
-        // Récupération de la vue souhaitée
-        val myView = rootView.findViewById<TextView>(R.id.name)
-
-        //var listMedias : Unit = MediaApi().search("e53e59cf1e29b9afff93d9ca1208f0cf", "en-US", "One Piece", 1, false) { listMedia -> listMedia }
-        //var listMedia : List<Media> = MediaApi().getPopularMovies("e53e59cf1e29b9afff93d9ca1208f0cf")
-        //var listMedia : List<Media> = MediaApi().getForrestGump()
-
-        val apiKey = "e53e59cf1e29b9afff93d9ca1208f0cf"
-        val language = "en-US"
-        val query = "One Piece"
-        val page = 1
-        val includeAdult = false
-        MediaApi().search(apiKey, language, query, page, includeAdult) { listMedia ->
-            //Do something with listMedia
-            Log.d("TAG", "onCreateView: " + listMedia)
-            Log.d("Image", "onCreateView: " + listMedia[0].posterPath.toString())
-            myView.text = listMedia[0].title.toString() + " " + listMedia[0].id.toString() + " " + listMedia[0].posterPath.toString()
-            //ajouter le recyclerView à la vue
-
-            val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view_movies)
-            //recyclerView.layoutManager = LinearLayoutManager(context)
-            val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-            recyclerView.layoutManager = layoutManager
-            val adapter = MediaAdapter(listMedia)
-            recyclerView.adapter = adapter
-
-        }
-
         return rootView
     }
 

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.example.cinapp.R
 import com.example.cinapp.viewModel.SearchViewModel
 
@@ -25,11 +26,11 @@ class SearchFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var searchView: SearchView
-    private lateinit var searchVM: SearchViewModel
+    private lateinit var searchViewModel: SearchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("InfoSearch", "onCreateView: ")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -42,16 +43,16 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_search, container, false)
-        searchView = view.findViewById(R.id.searchView)
-        Log.d("SearchViewModel", "setSearchView: $searchView")
-        return view
+        Log.d("InfoSearch", "onCreateView: ")
+        val rootView = inflater.inflate(R.layout.fragment_search, container, false)
+        val viewModelProvider = ViewModelProvider(this)
+        searchViewModel = viewModelProvider.get(SearchViewModel::class.java)
+        searchViewModel.setSearchView(rootView)
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchVM = ViewModelProvider(this)[SearchViewModel::class.java]
-        searchVM.setSearchView(searchView)
     }
 
     companion object {
