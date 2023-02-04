@@ -27,30 +27,22 @@ class SearchViewModel : ViewModel() {
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // Traitement lors de la soumission de la requête
-
                 MediaApi().search(query.toString(), 1)
                 { listMedia ->
+                    val textView = rootView.findViewById<View>(R.id.noResult)
+                    val recyclerView = rootView.findViewById<RecyclerView>(R.id.searchRecyclerView)
                     if(listMedia.isEmpty()){
-                        val textView = rootView.findViewById<View>(R.id.noResult)
                         textView.visibility = View.VISIBLE
                     }else{
-                        val textView = rootView.findViewById<View>(R.id.noResult)
                         textView.visibility = View.GONE
-                        val recyclerView = rootView.findViewById<RecyclerView>(R.id.searchRecyclerView)
                         recyclerView.layoutManager = GridLayoutManager(context, 2)
                         recyclerView.adapter = MediaAdapter(listMedia)
                     }
                 }
-
-
-                Log.d("SearchViewModel -----", "onQueryTextSubmit: $query")
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Traitement lorsque le texte de la requête change
-                Log.d("SearchViewModel *******", "onQueryTextChange: $newText")
                 return false
             }
         })
