@@ -30,7 +30,7 @@ class MediaApi {
                 listMediaResponse?.forEach { mediaResponse ->
                     val media = mediaMapper.searchMapToMedia(mediaResponse)
                     Log.d("Media", media.toString())
-                    listMedia.add(media)
+                    if (media != null) listMedia.add(media)
                 }
                 callback(listMedia)
             }

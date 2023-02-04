@@ -31,10 +31,16 @@ class SearchViewModel : ViewModel() {
 
                 MediaApi().search(query.toString(), 1)
                 { listMedia ->
-                    val recyclerView = rootView.findViewById<RecyclerView>(R.id.searchRecyclerView)
-                    recyclerView.layoutManager = GridLayoutManager(context, 2)
-                    recyclerView.adapter = MediaAdapter(listMedia)
-
+                    if(listMedia.isEmpty()){
+                        val textView = rootView.findViewById<View>(R.id.noResult)
+                        textView.visibility = View.VISIBLE
+                    }else{
+                        val textView = rootView.findViewById<View>(R.id.noResult)
+                        textView.visibility = View.GONE
+                        val recyclerView = rootView.findViewById<RecyclerView>(R.id.searchRecyclerView)
+                        recyclerView.layoutManager = GridLayoutManager(context, 2)
+                        recyclerView.adapter = MediaAdapter(listMedia)
+                    }
                 }
 
 

@@ -18,4 +18,5 @@
     <string name="movie">Movie</string>
     <string name="serie">Serie</string>
     <string name="search">Search</string>
+    <string name="aucun_r_sultat">Aucun résultat</string>
 </resources>

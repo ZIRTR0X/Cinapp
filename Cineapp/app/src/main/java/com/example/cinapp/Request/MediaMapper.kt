@@ -5,11 +5,11 @@ import com.example.cinapp.model.Movie
 import com.example.cinapp.model.Serie
 
 class MediaMapper {
-    fun searchMapToMedia(mediaResponse: MediaResponse): Media {
+    fun searchMapToMedia(mediaResponse: MediaResponse): Media? {
         return when (mediaResponse.media_type) {
             "movie" -> mapToMovie(mediaResponse)
             "tv" -> mapToSerie(mediaResponse)
-            else -> throw IllegalArgumentException("Invalid media type")
+            else -> return null
         }
     }
 
