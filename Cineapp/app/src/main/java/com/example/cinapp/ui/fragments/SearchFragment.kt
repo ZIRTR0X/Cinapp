@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.cinapp.R
+import com.example.cinapp.viewModel.MediaViewModel
 import com.example.cinapp.viewModel.SearchViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -27,9 +28,12 @@ class SearchFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var searchViewModel: SearchViewModel
+    private lateinit var mediaViewModel: MediaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModelProvider = ViewModelProvider(this)
+        mediaViewModel = viewModelProvider.get(MediaViewModel::class.java)
         Log.d("InfoSearch", "onCreateView: ")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)

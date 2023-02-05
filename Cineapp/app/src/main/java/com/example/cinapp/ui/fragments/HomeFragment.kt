@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cinapp.R
-import com.example.cinapp.Request.MediaAdapter
+import com.example.cinapp.adapter.MediaAdapter
 import com.example.cinapp.Request.MediaApi
 import com.example.cinapp.model.Media
 

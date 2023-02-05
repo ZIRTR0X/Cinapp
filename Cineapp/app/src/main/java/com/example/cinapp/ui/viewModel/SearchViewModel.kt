@@ -7,11 +7,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.cinapp.BuildConfig
 import com.example.cinapp.MainActivity
 import com.example.cinapp.R
-import com.example.cinapp.Request.MediaAdapter
+import com.example.cinapp.adapter.MediaAdapter
 import com.example.cinapp.Request.MediaApi
 
 @SuppressLint("StaticFieldLeak")
@@ -47,4 +45,8 @@ class SearchViewModel : ViewModel() {
             }
         })
     }
+
+    /*fun onMediaClicked(media: Media) {
+        Log.d("SearchViewModel", "onMediaClicked: $media")
+    }*/
 }
