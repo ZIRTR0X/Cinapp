@@ -1,4 +1,4 @@
-package com.example.cinapp.fragments
+package com.example.cinapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

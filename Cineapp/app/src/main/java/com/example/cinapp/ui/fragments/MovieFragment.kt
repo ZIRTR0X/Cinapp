@@ -1,16 +1,11 @@
-package com.example.cinapp.fragments
+package com.example.cinapp.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cinapp.R
-import com.example.cinapp.Request.*
 
 
 // TODO: Rename parameter arguments, choose names that match

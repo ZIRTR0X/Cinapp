@@ -1,6 +1,4 @@
-package com.example.cinapp.Request
-
-import com.example.cinapp.model.Movie
+package com.example.cinapp.api.dto
 
 
 class Demmy (

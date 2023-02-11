@@ -1,4 +1,4 @@
-package com.example.cinapp.viewModel
+package com.example.cinapp.ui.viewModel
 
 import android.content.Intent
 import androidx.lifecycle.ViewModel
@@ -8,5 +8,9 @@ class MediaViewModel: ViewModel() {
 
     fun onMediaClicked(media: Media) {
 
+    }
+
+    fun getMediaLiveData(mediaId: Int): Any {
+        return Intent()
     }
 }

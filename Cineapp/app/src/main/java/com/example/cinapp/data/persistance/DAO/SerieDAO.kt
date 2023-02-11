@@ -1,7 +1,7 @@
-package com.example.cinapp.Room.DAO
+package com.example.cinapp.data.persistance.DAO
 
 import androidx.room.*
-import com.example.cinapp.Room.Entity.SerieEntity
+import com.example.cinapp.data.persistance.Entity.SerieEntity
 
 @Dao
 interface SerieDAO {

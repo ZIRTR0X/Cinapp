@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.cinapp.databinding.ActivityMainBinding
-import com.example.cinapp.fragments.HomeFragment
-import com.example.cinapp.fragments.MovieFragment
-import com.example.cinapp.fragments.SearchFragment
-import com.example.cinapp.fragments.SerieFragment
+import com.example.cinapp.ui.fragments.HomeFragment
+import com.example.cinapp.ui.fragments.MovieFragment
+import com.example.cinapp.ui.fragments.SearchFragment
+import com.example.cinapp.ui.fragments.SerieFragment
 
 
 class MainActivity : AppCompatActivity() {

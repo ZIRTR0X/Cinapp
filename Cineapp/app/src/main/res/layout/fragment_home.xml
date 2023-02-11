@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/first_grey"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".ui.fragments.HomeFragment">
 
         <!-- TODO: Update blank fragment layout -->
 

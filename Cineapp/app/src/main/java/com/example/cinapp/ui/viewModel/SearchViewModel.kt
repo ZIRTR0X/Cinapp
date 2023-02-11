@@ -1,19 +1,22 @@
-package com.example.cinapp.viewModel
+package com.example.cinapp.ui.viewModel
 
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinapp.MainActivity
 import com.example.cinapp.R
-import com.example.cinapp.adapter.MediaAdapter
-import com.example.cinapp.Request.MediaApi
+import com.example.cinapp.ui.adapter.MediaAdapter
+import com.example.cinapp.api.MediaApi
+import com.example.cinapp.model.Media
 
 @SuppressLint("StaticFieldLeak")
 class SearchViewModel : ViewModel() {
+
+    var medias = MutableLiveData<List<Media>>()
 
     var searchView: SearchView? = null
     val context : MainActivity = MainActivity()
@@ -32,9 +35,10 @@ class SearchViewModel : ViewModel() {
                     if(listMedia.isEmpty()){
                         textView.visibility = View.VISIBLE
                     }else{
+                        medias.postValue(listMedia)
                         textView.visibility = View.GONE
                         recyclerView.layoutManager = GridLayoutManager(context, 2)
-                        recyclerView.adapter = MediaAdapter(listMedia)
+                        recyclerView.adapter = MediaAdapter(medias)
                     }
                 }
                 return false
@@ -45,8 +49,4 @@ class SearchViewModel : ViewModel() {
             }
         })
     }
-
-    /*fun onMediaClicked(media: Media) {
-        Log.d("SearchViewModel", "onMediaClicked: $media")
-    }*/
 }

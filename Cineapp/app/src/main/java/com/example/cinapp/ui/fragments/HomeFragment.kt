@@ -1,16 +1,14 @@
-package com.example.cinapp.fragments
+package com.example.cinapp.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.lifecycle.MutableLiveData
 import com.example.cinapp.R
-import com.example.cinapp.adapter.MediaAdapter
-import com.example.cinapp.Request.MediaApi
 import com.example.cinapp.model.Media
+import com.example.cinapp.ui.viewModel.HomeViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +24,7 @@ class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var viewModel = HomeViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,42 +34,44 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val popularMoviesList = viewModel.popularMovies.value
+        val popularMoviesArrayList = popularMoviesList?.toCollection(ArrayList())
+
+        val popularSeriesList = viewModel.popularTvShows.value
+        val popularSeriesArrayList = popularSeriesList?.toCollection(ArrayList())
+
+        val topRatedMoviesList = viewModel.topRatedMovies.value
+        val topRatedMoviesArrayList = topRatedMoviesList?.toCollection(ArrayList())
+
+        val topRatedSeriesList = viewModel.topRatedTvShows.value
+        val topRatedSeriesArrayList = topRatedSeriesList?.toCollection(ArrayList())
+
+        outState.putParcelableArrayList("popularMovies", popularMoviesArrayList)
+        outState.putParcelableArrayList("popularSeries", popularSeriesArrayList)
+        outState.putParcelableArrayList("topRatedMovies", topRatedMoviesArrayList)
+        outState.putParcelableArrayList("topRatedSeries", topRatedSeriesArrayList)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //getPopularMovies
-        // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
-        MediaApi().getPopularMovies() { listMedia ->
-            val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_movies)
-            addMediaToRecyclerView(listMedia, recyclerView)
+        if (savedInstanceState != null) {
+            val list = savedInstanceState.getParcelableArrayList<Media>("popularMovies")
+            viewModel.popularMovies.postValue(list)
+            val list2 = savedInstanceState.getParcelableArrayList<Media>("popularSeries")
+            viewModel.popularTvShows.postValue(list2)
+            val list3 = savedInstanceState.getParcelableArrayList<Media>("topRatedMovies")
+            viewModel.topRatedMovies.postValue(list3)
+            val list4 = savedInstanceState.getParcelableArrayList<Media>("topRatedSeries")
+            viewModel.topRatedTvShows.postValue(list4)
         }
-
-        MediaApi().getPopularSeries() { listMedia ->
-            val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_series)
-            addMediaToRecyclerView(listMedia, recyclerView)
-        }
-
-        MediaApi().getTopRatedMovie() { listMedia ->
-            val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_movies)
-            addMediaToRecyclerView(listMedia, recyclerView)
-        }
-
-        MediaApi().getTopRatedSerie() { listMedia ->
-            val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_series)
-            addMediaToRecyclerView(listMedia, recyclerView)
-        }
-
+        viewModel = HomeViewModel()
+        viewModel.addMedia(rootView)
         return rootView
-    }
-
-    fun addMediaToRecyclerView(listMedia: List<Media>, recyclerView: RecyclerView) {
-        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
-        recyclerView.layoutManager = layoutManager
-        val adapter = MediaAdapter(listMedia)
-        recyclerView.adapter = adapter
     }
 
     companion object {

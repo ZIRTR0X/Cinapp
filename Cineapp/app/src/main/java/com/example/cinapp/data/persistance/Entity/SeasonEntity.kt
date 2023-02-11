@@ -1,4 +1,4 @@
-package com.example.cinapp.Room.Entity
+package com.example.cinapp.data.persistance.Entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

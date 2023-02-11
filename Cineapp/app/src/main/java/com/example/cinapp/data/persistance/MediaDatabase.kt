@@ -1,15 +1,15 @@
-package com.example.cinapp.Room
+package com.example.cinapp.data.persistance
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.cinapp.Room.DAO.EpisodeDAO
-import com.example.cinapp.Room.DAO.MovieDAO
-import com.example.cinapp.Room.DAO.SeasonDAO
-import com.example.cinapp.Room.DAO.SerieDAO
-import com.example.cinapp.Room.Entity.EpisodeEntity
-import com.example.cinapp.Room.Entity.MovieEntity
-import com.example.cinapp.Room.Entity.SeasonEntity
-import com.example.cinapp.Room.Entity.SerieEntity
+import com.example.cinapp.data.persistance.DAO.EpisodeDAO
+import com.example.cinapp.data.persistance.DAO.MovieDAO
+import com.example.cinapp.data.persistance.DAO.SeasonDAO
+import com.example.cinapp.data.persistance.DAO.SerieDAO
+import com.example.cinapp.data.persistance.Entity.EpisodeEntity
+import com.example.cinapp.data.persistance.Entity.MovieEntity
+import com.example.cinapp.data.persistance.Entity.SeasonEntity
+import com.example.cinapp.data.persistance.Entity.SerieEntity
 
 @Database(entities = [SeasonEntity::class, EpisodeEntity::class, MovieEntity::class, SerieEntity::class], version = 1)
 abstract class MediaDatabase: RoomDatabase() {

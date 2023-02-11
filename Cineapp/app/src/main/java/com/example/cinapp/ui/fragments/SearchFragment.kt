@@ -1,4 +1,4 @@
-package com.example.cinapp.fragments
+package com.example.cinapp.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +10,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.cinapp.R
-import com.example.cinapp.viewModel.MediaViewModel
-import com.example.cinapp.viewModel.SearchViewModel
+import com.example.cinapp.model.Media
+import com.example.cinapp.ui.viewModel.HomeViewModel
+import com.example.cinapp.ui.viewModel.MediaViewModel
+import com.example.cinapp.ui.viewModel.SearchViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,9 +52,25 @@ class SearchFragment : Fragment() {
         Log.d("InfoSearch", "onCreateView: ")
         val rootView = inflater.inflate(R.layout.fragment_search, container, false)
         val viewModelProvider = ViewModelProvider(this)
+
         searchViewModel = viewModelProvider.get(SearchViewModel::class.java)
         searchViewModel.setSearchView(rootView)
+
+        savedInstanceState?.let {
+            val searchList = it.getParcelableArrayList<Media>("popularMovies")
+            searchViewModel.medias.postValue(searchList)
+            Log.d("InfoSearch", "onCreateView: ${searchList?.size}")
+        }
+
         return rootView
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val searchmedias = searchViewModel.medias.value
+        val searchmediasArrayList = searchmedias?.toCollection(ArrayList())
+
+        outState.putParcelableArrayList("searchMedias", searchmediasArrayList)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

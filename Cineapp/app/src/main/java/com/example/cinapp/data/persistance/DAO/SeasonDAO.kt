@@ -1,9 +1,9 @@
-package com.example.cinapp.Room.DAO
+package com.example.cinapp.data.persistance.DAO
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
-import com.example.cinapp.Room.Entity.SeasonEntity
+import com.example.cinapp.data.persistance.Entity.SeasonEntity
 
 @Dao
 interface SeasonDAO {

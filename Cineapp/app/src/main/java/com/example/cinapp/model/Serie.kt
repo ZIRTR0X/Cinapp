@@ -15,6 +15,7 @@ class Serie(
     voteAverage: Double? = null,
     voteCount: Int? = null,
     genreIds: List<Int>? = null,
+    isView: Boolean? = null,
     var seasons: List<Season>? = null,
     var numberOfSeasons: Int? = null,
     var numberOfEpisodes: Int? = null
@@ -32,6 +33,7 @@ class Serie(
     posterPath,
     voteAverage,
     voteCount,
-    genreIds
+    genreIds,
+    isView
 ) {
 }

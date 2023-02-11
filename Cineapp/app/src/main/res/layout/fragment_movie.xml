@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/first_grey"
-    tools:context=".fragments.MovieFragment">
+    tools:context=".ui.fragments.MovieFragment">
 
 
     <com.google.android.material.tabs.TabLayout

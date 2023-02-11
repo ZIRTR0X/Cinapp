@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.cinapp.viewModel.SearchViewModel" />
+            type="com.example.cinapp.ui.viewModel.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/first_grey"
-        tools:context=".fragments.SearchFragment">
+        tools:context=".ui.fragments.SearchFragment">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"

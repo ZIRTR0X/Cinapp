@@ -1,6 +1,7 @@
-package com.example.cinapp.Request
+package com.example.cinapp.api
 
 import com.example.cinapp.BuildConfig
+import com.example.cinapp.api.dto.Demmy
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -14,7 +14,8 @@ class Movie(
     posterPath: String? = null,
     voteAverage: Double? = null,
     voteCount: Int? = null,
-    genreIds: List<Int>? = null
+    genreIds: List<Int>? = null,
+    isView: Boolean? = null
 ): Media(
     adult,
     id,
@@ -29,6 +30,7 @@ class Movie(
     posterPath,
     voteAverage,
     voteCount,
-    genreIds
+    genreIds,
+    isView
 ) {
 }

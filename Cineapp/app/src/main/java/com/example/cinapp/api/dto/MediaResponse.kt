@@ -1,4 +1,4 @@
-package com.example.cinapp.Request
+package com.example.cinapp.api.dto
 
 import com.example.cinapp.model.Season
 

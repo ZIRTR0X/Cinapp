@@ -1,5 +1,6 @@
-package com.example.cinapp.Request
+package com.example.cinapp.api
 
+import com.example.cinapp.api.dto.MediaResponse
 import com.example.cinapp.model.Media
 import com.example.cinapp.model.Movie
 import com.example.cinapp.model.Serie

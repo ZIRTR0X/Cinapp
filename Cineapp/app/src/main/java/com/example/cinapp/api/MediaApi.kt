@@ -1,6 +1,7 @@
-package com.example.cinapp.Request
+package com.example.cinapp.api
 
 import android.util.Log
+import com.example.cinapp.api.dto.Demmy
 import com.example.cinapp.model.Media
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +25,7 @@ class MediaApi {
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1", response.body().toString())
+                Log.d("Liste1 search", response.body().toString())
                 val allMedia = response.body()
                 val listMediaResponse = allMedia?.results
                 listMediaResponse?.forEach { mediaResponse ->
