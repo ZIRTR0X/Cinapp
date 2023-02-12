@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:text="@string/aucun_r_sultat"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="@+id/searchRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
