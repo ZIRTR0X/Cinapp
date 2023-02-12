@@ -18,7 +18,6 @@ class MediaResponse(
     val genre_ids: List<Int>,
     val original_title: String,
     val title: String,
-    val video: Boolean,
     val release_date: String
 ) {
 

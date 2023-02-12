@@ -1,9 +1,6 @@
 package com.example.cinapp.data.persistance
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.room.*
 import com.example.cinapp.CinAppApplication
 import com.example.cinapp.data.persistance.DAO.MovieDAO
@@ -32,21 +29,8 @@ abstract class MediaDatabase: RoomDatabase() {
                         .build()
                 }
             }
-            Log.d("MediaDatabase", "getInstance: ${instance.toString()}")
             return instance!!
         }
-
-        /*if (instance == null)
-        synchronized(this) {
-            if (instance == null)
-                instance = Room.databaseBuilder(
-                    application.applicationContext,
-                    DogDatabase::class.java,
-                    DOG_DB_FILENAME
-                )
-                    .build()
-        }
-        return instance!!*/
 
         @JvmStatic
         fun initialize(app: CinAppApplication) {
@@ -54,7 +38,6 @@ abstract class MediaDatabase: RoomDatabase() {
                 throw RuntimeException("the database must not be initialized twice")
 
             application = app
-            Log.d("MediaDatabase", "initialize: ${application.toString()}")
         }
 
 

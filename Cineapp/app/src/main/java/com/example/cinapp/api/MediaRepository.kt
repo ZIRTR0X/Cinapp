@@ -21,16 +21,13 @@ class MediaRepository {
     fun search(query: String, page: Int, callback: (List<Media>) -> Unit) {
         val response: Call<Demmy> = service.searchMedia(query, page)
         val listMedia: MutableList<Media> = mutableListOf()
-        Log.d("TAG", "search: " + response.request().url())
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1 search", response.body().toString())
                 val allMedia = response.body()
                 val listMediaResponse = allMedia?.results
                 listMediaResponse?.forEach { mediaResponse ->
                     val media = mediaMapper.searchMapToMedia(mediaResponse)
-                    Log.d("Media", media.toString())
                     if (media != null) listMedia.add(media)
                 }
                 callback(listMedia)
@@ -40,7 +37,6 @@ class MediaRepository {
                 Log.d("ErrorRetrofit", t.message.toString())
             }
         })
-        Log.d("Liste2", listMedia.size.toString())
     }
 
     fun getPopularMovies(callback: (List<Media>) -> Unit ) {
@@ -49,7 +45,6 @@ class MediaRepository {
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1", response.body().toString())
                 val allMedia = response.body()!!
                 val listMediaResponse = allMedia.results
                 listMediaResponse.forEach { mediaResponse ->
@@ -70,7 +65,6 @@ class MediaRepository {
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1", response.body().toString())
                 val allMedia = response.body()!!
                 val listMediaResponse = allMedia.results
                 listMediaResponse.forEach { mediaResponse ->
@@ -91,7 +85,6 @@ class MediaRepository {
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1", response.body().toString())
                 val allMedia = response.body()!!
                 val listMediaResponse = allMedia.results
                 listMediaResponse.forEach { mediaResponse ->
@@ -112,7 +105,6 @@ class MediaRepository {
 
         response.enqueue(object : Callback<Demmy> {
             override fun onResponse(call: Call<Demmy>, response: Response<Demmy>) {
-                Log.d("Liste1", response.body().toString())
                 val allMedia = response.body()!!
                 val listMediaResponse = allMedia.results
                 listMediaResponse.forEach { mediaResponse ->

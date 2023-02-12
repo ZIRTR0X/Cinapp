@@ -33,7 +33,6 @@ class AppDatabase {
             application = app
         }
 
-
         fun destroyInstance() {
             instance = null
         }

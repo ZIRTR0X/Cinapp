@@ -1,6 +1,5 @@
 package com.example.cinapp.ui.extensions
 
-import androidx.room.PrimaryKey
 import com.example.cinapp.data.persistance.Entity.MovieEntity
 import com.example.cinapp.model.Movie
 
@@ -41,7 +40,6 @@ class MovieExtensions {
                 movie.posterPath?: "",
                 movie.voteAverage?: 0.0,
                 movie.voteCount?: 0,
-            /*    movie.genreIds?: listOf(),*/
                 movie.isView?: false
             )
         }

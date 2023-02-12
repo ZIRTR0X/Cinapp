@@ -24,16 +24,14 @@ import kotlinx.coroutines.withContext
 
 class SerieViewModel: ViewModel() {
     var medias = MutableLiveData<List<Media>>()
-    var mediasEntity = MutableLiveData<List<SerieEntity>>()
     @SuppressLint("StaticFieldLeak")
     lateinit var main: MainActivity;
 
     @JvmName("setSearchView1")
     fun setMediaList(rootView: View) {
-        Log.d("SearchViewModel", "View: $rootView")
         viewModelScope.launch(Dispatchers.IO) {
-            var listMediaEntity = downloadMedia()
-            var listeMedia : MutableList<Media> = mutableListOf()
+            val listMediaEntity = downloadMedia()
+            val listeMedia : MutableList<Media> = mutableListOf()
             listMediaEntity.forEach() {
                 listeMedia.add(SerieExtensions.toSerie(it))
             }

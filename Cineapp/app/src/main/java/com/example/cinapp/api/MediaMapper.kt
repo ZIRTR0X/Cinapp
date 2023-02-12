@@ -51,9 +51,6 @@ class MediaMapper {
             originalName = mediaResponse.original_name,
             originCountry = mediaResponse.origin_country,
             isView = false
-            //seasons = mediaResponse.seasons,
-            //numberOfSeasons = mediaResponse.numberOfSeasons,
-            //numberOfEpisodes = mediaResponse.numberOfEpisodes
         )
     }
 }

@@ -19,7 +19,6 @@ class SerieExtensions {
                 serie.posterPath?: "",
                 serie.voteAverage?: 0.0,
                 serie.voteCount?: 0,
-               /* serie.genreIds?: listOf(),*/
                 serie.isView?: false
             )
         }

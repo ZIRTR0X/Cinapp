@@ -23,7 +23,6 @@ class SearchViewModel : ViewModel() {
     @JvmName("setSearchView1")
     fun setSearchView(rootView: View) {
         searchView = rootView.findViewById(R.id.searchView)
-        Log.d("SearchViewModel", "setSearchView: $searchView")
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

@@ -19,13 +19,11 @@ import kotlinx.coroutines.*
 
 class MovieViewModel: ViewModel() {
     var medias = MutableLiveData<List<Media>>()
-    var mediasEntity = MutableLiveData<List<MovieEntity>>()
     @SuppressLint("StaticFieldLeak")
     lateinit var main: MainActivity;
 
     @JvmName("setSearchView1")
     fun setMediaList(rootView: View) {
-        Log.d("SearchViewModel", "View: $rootView")
         viewModelScope.launch(Dispatchers.IO) {
             var listMediaEntity = downloadMedia()
             var listeMedia : MutableList<Media> = mutableListOf()

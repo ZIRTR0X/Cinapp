@@ -61,7 +61,6 @@ class HomeViewModel(private val main: MainActivity): ViewModel() {
     }
 
     fun addMediaToRecyclerView(recyclerView: RecyclerView, mediaList: MutableLiveData<List<Media>>) {
-        Log.d("HomeViewModel ------", "addMediaToRecyclerView: $recyclerView")
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = MediaAdapter(mediaList, main)

@@ -13,13 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MediaInfoViewModel: ViewModel() {
-    fun addMovieToWatchList() {
-        TODO("Not yet implemented")
-    }
-
-    fun addSerieToWatchList() {
-        TODO("Not yet implemented")
-    }
 
     fun addMediaToWatchList(db: MediaDatabase, media: Media) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -56,7 +49,6 @@ class MediaInfoViewModel: ViewModel() {
                 isInWatchList = db?.serieDAO()?.getById(serieEntity.id) != null
             }
         }
-        Log.d("isInWatchList", isInWatchList.toString())
         return isInWatchList
     }
 
