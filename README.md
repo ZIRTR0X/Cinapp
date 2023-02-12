@@ -3,9 +3,10 @@
 CineApp is an Android application project dedicated to movie lovers. It allows users to view information about recent and popular movies, add them to their favourites list and rate them.
 
 # Features
-- View list of popular and recent movies  
-- Add movies to favorites list
-- View detailed information about movies (synopsis, release date, etc.)
+- View list of popular and recent movies/series  
+- Add movies/series to favorites list  
+- Rating of movies/series   
+- View detailed information about movies/series (synopsis, release date, etc.)
 
 # Dependencies
 To use this project, you will need the following dependencies:

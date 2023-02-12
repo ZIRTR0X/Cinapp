@@ -24,4 +24,5 @@
     <string name="release_date">21/12/2019"</string>
     <string name="add_to_viewed">Not view</string>
     <string name="remove_from_viewed">View</string>
+    <string name="rate">Rate</string>
 </resources>
