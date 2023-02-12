@@ -18,17 +18,26 @@ interface MovieDAO {
     @Query("SELECT * FROM movie WHERE id LIKE :id LIMIT 1")
     fun findById(id: Int): MovieEntity
 
-    @Query("SELECT * FROM movie WHERE :genreId IN (genreIds)")
+  /*  @Query("SELECT * FROM movie WHERE :genreId IN (genreIds)")
     fun findByGenre(genreId: Int): List<MovieEntity>
 
     @Query("SELECT * FROM movie WHERE :genreId IN (genreIds)")
-    fun findByGenres(genreId: List<Int>): List<MovieEntity>
+    fun findByGenres(genreId: List<Int>): List<MovieEntity>*/
+
+    @Query("SELECT * FROM movie WHERE id = :id")
+    fun getById(id: Int): MovieEntity
 
     @Update
     fun updateMovie(movie: MovieEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg movies: MovieEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(movie: MovieEntity)
+
+    @Delete
+    fun delete(movie: MovieEntity)
 
     @Query("DELETE FROM movie")
     fun deleteAll()

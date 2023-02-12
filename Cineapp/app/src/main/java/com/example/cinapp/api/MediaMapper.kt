@@ -29,7 +29,8 @@ class MediaMapper {
             backdropPath = mediaResponse.backdrop_path,
             originalLanguage = mediaResponse.original_language,
             originalName = mediaResponse.original_title,
-            originCountry = mediaResponse.origin_country
+            originCountry = mediaResponse.origin_country,
+            isView = false
         )
     }
 
@@ -48,7 +49,8 @@ class MediaMapper {
             backdropPath = mediaResponse.backdrop_path,
             originalLanguage = mediaResponse.original_language,
             originalName = mediaResponse.original_name,
-            originCountry = mediaResponse.origin_country
+            originCountry = mediaResponse.origin_country,
+            isView = false
             //seasons = mediaResponse.seasons,
             //numberOfSeasons = mediaResponse.numberOfSeasons,
             //numberOfEpisodes = mediaResponse.numberOfEpisodes

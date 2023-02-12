@@ -8,26 +8,19 @@ import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.model.Media
+import com.example.cinapp.ui.fragments.MovieFragment
+import com.example.cinapp.ui.fragments.MovieInfo
 
-/*class MediaAdapter(private val viewModel: MainViewModel, private val lifecycleOwner: LifecycleOwner, private val nbLiveData: Int) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {*/
-class MediaAdapter(private val mediaList: LiveData<List<Media>>) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
-    //private var mediaList = emptyList<Media>()
+class MediaAdapter(private val mediaList: LiveData<List<Media>>, private val main: MainActivity) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
         Log.d("MediaAdapter", "onCreateViewHolder: $view")
         return ViewHolder(view)
     }
-
-    /*fun subscribe(viewModel: MainViewModel, lifecycleOwner: LifecycleOwner, nbLiveData: Int) {
-        viewModel.getMediaLiveData(nbLiveData).observe(lifecycleOwner, Observer {
-            mediaList = it
-            notifyDataSetChanged()
-            Log.d("MediaAdapter", "subscribe: $it")
-        })
-    }*/
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         mediaList.observeForever {
@@ -39,20 +32,12 @@ class MediaAdapter(private val mediaList: LiveData<List<Media>>) : RecyclerView.
             Log.d("MediaAdapter", "onBindViewHolder: $media")
             holder.poster.setOnClickListener {
                 Log.d("MediaAdapter", "onBindViewHolder: $media")
+                //changer de fragment
+                val fragment = MovieInfo()
+                fragment.media = media
+                main.replaceFragment(fragment)
             }
         }
-        /*Log.d("MediaAdapter", "onBindViewHolder: $media")*/
-       /* subscribe(viewModel, lifecycleOwner, nbLiveData)*/
-        /*val movie = mediaList[position]
-        Glide.with(holder.itemView.context)
-            .load("https://image.tmdb.org/t/p/w500" + movie.posterPath)
-            .override(400, 600)
-            .into(holder.poster)*/
-
-       /* holder.poster.setOnClickListener {
-            Log.d("MediaAdapter", "onBindViewHolder: $media")
-        }*/
-
     }
     override fun getItemCount(): Int {
         return mediaList.value?.size ?: 0

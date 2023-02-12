@@ -18,7 +18,7 @@ open class Media (
     val voteAverage: Double? = null,
     val voteCount: Int? = null,
     val genreIds: List<Int>? = null,
-    val isView: Boolean? = null
+    var isView: Boolean? = null
         ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
@@ -36,13 +36,12 @@ open class Media (
         parcel.readValue(Int::class.java.classLoader) as? Int,
         TODO("genreIds"),
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(adult)
         parcel.writeInt(id)
-        parcel.writeString(title)
+        parcel.writeString(this.title)
         parcel.writeString(backdropPath)
         parcel.writeString(releaseDate)
         parcel.writeStringList(originCountry)

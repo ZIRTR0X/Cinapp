@@ -19,4 +19,9 @@
     <string name="serie">Serie</string>
     <string name="search">Search</string>
     <string name="aucun_r_sultat">Aucun résultat</string>
+    <string name="title">title</string>
+    <string name="overview">overview</string>
+    <string name="release_date">21/12/2019"</string>
+    <string name="add_to_viewed">Not view</string>
+    <string name="remove_from_viewed">View</string>
 </resources>

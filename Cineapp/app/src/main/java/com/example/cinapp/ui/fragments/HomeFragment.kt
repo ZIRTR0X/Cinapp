@@ -1,11 +1,13 @@
 package com.example.cinapp.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
+import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.model.Media
 import com.example.cinapp.ui.viewModel.HomeViewModel
@@ -20,11 +22,11 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment(private var main: MainActivity?) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var viewModel = HomeViewModel()
+    private var viewModel = HomeViewModel(main!!)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +71,7 @@ class HomeFragment : Fragment() {
             val list4 = savedInstanceState.getParcelableArrayList<Media>("topRatedSeries")
             viewModel.topRatedTvShows.postValue(list4)
         }
-        viewModel = HomeViewModel()
+        viewModel = HomeViewModel(main!!)
         viewModel.addMedia(rootView)
         return rootView
     }
@@ -86,7 +88,7 @@ class HomeFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+            HomeFragment(null).apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

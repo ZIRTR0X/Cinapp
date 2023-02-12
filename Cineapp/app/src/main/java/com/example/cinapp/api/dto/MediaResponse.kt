@@ -1,7 +1,5 @@
 package com.example.cinapp.api.dto
 
-import com.example.cinapp.model.Season
-
 class MediaResponse(
     val adult: Boolean,
     val id: Int,
@@ -21,10 +19,7 @@ class MediaResponse(
     val original_title: String,
     val title: String,
     val video: Boolean,
-    val release_date: String,
-    var seasons: List<Season>? = null,
-    var numberOfSeasons: Int? = null,
-    var numberOfEpisodes: Int? = null
+    val release_date: String
 ) {
 
 }

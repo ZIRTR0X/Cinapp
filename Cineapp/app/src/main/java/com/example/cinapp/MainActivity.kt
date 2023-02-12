@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.example.cinapp.data.persistance.MediaDatabase
 import com.example.cinapp.databinding.ActivityMainBinding
 import com.example.cinapp.ui.fragments.HomeFragment
 import com.example.cinapp.ui.fragments.MovieFragment
@@ -19,22 +20,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
+        replaceFragment(HomeFragment(this))
         supportActionBar?.hide()
 
         binding.bottomNavigation.setOnItemSelectedListener {
+            var movie = MovieFragment()
+            movie.main = this
+            var serie = SerieFragment()
+
             when(it.itemId){
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.movie -> replaceFragment(MovieFragment())
+                R.id.home -> replaceFragment(HomeFragment(this))
+                R.id.movie -> replaceFragment(movie)
                 R.id.serie -> replaceFragment(SerieFragment())
-                R.id.search -> replaceFragment(SearchFragment())
+                R.id.search -> replaceFragment(SearchFragment(this))
                 /*else -> false*/
             }
             true
         }
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.main_layout, fragment).commit()
     }
 }

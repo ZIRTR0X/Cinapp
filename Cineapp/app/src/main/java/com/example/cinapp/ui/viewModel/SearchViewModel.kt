@@ -10,16 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.ui.adapter.MediaAdapter
-import com.example.cinapp.api.MediaApi
+import com.example.cinapp.api.MediaRepository
 import com.example.cinapp.model.Media
 
 @SuppressLint("StaticFieldLeak")
 class SearchViewModel : ViewModel() {
-
+    var main: MainActivity? = null
     var medias = MutableLiveData<List<Media>>()
 
     var searchView: SearchView? = null
-    val context : MainActivity = MainActivity()
 
     @JvmName("setSearchView1")
     fun setSearchView(rootView: View) {
@@ -28,7 +27,7 @@ class SearchViewModel : ViewModel() {
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                MediaApi().search(query.toString(), 1)
+                MediaRepository().search(query.toString(), 1)
                 { listMedia ->
                     val textView = rootView.findViewById<View>(R.id.noResult)
                     val recyclerView = rootView.findViewById<RecyclerView>(R.id.searchRecyclerView)
@@ -37,8 +36,9 @@ class SearchViewModel : ViewModel() {
                     }else{
                         medias.postValue(listMedia)
                         textView.visibility = View.GONE
+                        val context = rootView.context
                         recyclerView.layoutManager = GridLayoutManager(context, 2)
-                        recyclerView.adapter = MediaAdapter(medias)
+                        recyclerView.adapter = main?.let { MediaAdapter(medias, it) }
                     }
                 }
                 return false

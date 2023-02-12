@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.model.Media
 import com.example.cinapp.ui.viewModel.HomeViewModel
@@ -25,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SearchFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SearchFragment : Fragment() {
+class SearchFragment(private var mainA: MainActivity?) : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -55,6 +56,7 @@ class SearchFragment : Fragment() {
 
         searchViewModel = viewModelProvider.get(SearchViewModel::class.java)
         searchViewModel.setSearchView(rootView)
+        searchViewModel.main = mainA
 
         savedInstanceState?.let {
             val searchList = it.getParcelableArrayList<Media>("popularMovies")
@@ -89,7 +91,7 @@ class SearchFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
+            SearchFragment(null).apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

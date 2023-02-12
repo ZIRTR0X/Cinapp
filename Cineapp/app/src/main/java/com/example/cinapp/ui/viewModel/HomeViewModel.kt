@@ -1,6 +1,7 @@
 package com.example.cinapp.ui.viewModel
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -10,28 +11,24 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cinapp.MainActivity
 import com.example.cinapp.R
-import com.example.cinapp.api.MediaApi
+import com.example.cinapp.api.MediaRepository
 import com.example.cinapp.model.Media
 import com.example.cinapp.ui.adapter.MediaAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel(private val main: MainActivity): ViewModel() {
 
     var popularMovies = MutableLiveData<List<Media>>()
-
     var popularTvShows = MutableLiveData<List<Media>>()
-
     var topRatedMovies = MutableLiveData<List<Media>>()
-
     var topRatedTvShows = MutableLiveData<List<Media>>()
 
     @SuppressLint("StaticFieldLeak")
-    val context : MainActivity = MainActivity()
 
     fun addMedia(rootView: View) {
         viewModelScope.launch(Dispatchers.IO){
-            MediaApi().getPopularMovies { listMedia ->
+            MediaRepository().getPopularMovies { listMedia ->
                 popularMovies.postValue(listMedia)
                 val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_movies)
                 addMediaToRecyclerView(recyclerView, popularMovies)
@@ -39,7 +36,7 @@ class HomeViewModel: ViewModel() {
         }
 
         viewModelScope.launch(Dispatchers.IO){
-            MediaApi().getPopularSeries { listMedia ->
+            MediaRepository().getPopularSeries { listMedia ->
                 popularTvShows.postValue(listMedia)
                 val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_popular_series)
                 addMediaToRecyclerView(recyclerView, popularTvShows)
@@ -47,7 +44,7 @@ class HomeViewModel: ViewModel() {
         }
 
         viewModelScope.launch(Dispatchers.IO){
-            MediaApi().getTopRatedMovie { listMedia ->
+            MediaRepository().getTopRatedMovie { listMedia ->
                 topRatedMovies.postValue(listMedia)
                 val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_movies)
                 addMediaToRecyclerView(recyclerView, topRatedMovies)
@@ -55,7 +52,7 @@ class HomeViewModel: ViewModel() {
         }
 
         viewModelScope.launch(Dispatchers.IO) {
-            MediaApi().getTopRatedSerie { listMedia ->
+            MediaRepository().getTopRatedSerie { listMedia ->
                 topRatedTvShows.postValue(listMedia)
                 val recyclerView = rootView.findViewById<RecyclerView>(R.id.rc_top_rated_series)
                 addMediaToRecyclerView(recyclerView, topRatedTvShows)
@@ -67,7 +64,7 @@ class HomeViewModel: ViewModel() {
         Log.d("HomeViewModel ------", "addMediaToRecyclerView: $recyclerView")
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = MediaAdapter(mediaList)
+        recyclerView.adapter = MediaAdapter(mediaList, main)
     }
 
 
