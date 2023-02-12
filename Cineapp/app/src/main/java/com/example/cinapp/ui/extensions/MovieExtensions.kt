@@ -7,25 +7,6 @@ import com.example.cinapp.model.Movie
 class MovieExtensions {
     companion object{
 
-        fun toMovieEntity(movie: Movie): MovieEntity {
-            return MovieEntity(
-                movie.id,
-                movie.title?: "",
-                movie.backdropPath?: "",
-                movie.releaseDate?: "",
-                movie.originCountry?: listOf(),
-                movie.originalLanguage?: "",
-                movie.originalName?: "",
-                movie.overview?: "",
-                movie.popularity?: 0.0,
-                movie.posterPath?: "",
-                movie.voteAverage?: 0.0,
-                movie.voteCount?: 0,
-            /*    movie.genreIds?: listOf(),*/
-                movie.isView?: false
-            )
-        }
-
         fun toMovie(movieEntity: MovieEntity): Movie {
             return Movie(
                 null,
@@ -43,6 +24,25 @@ class MovieExtensions {
                 movieEntity.voteCount,
                 null,
                 movieEntity.isView
+            )
+        }
+
+        fun toMovieEntity(movie: Movie): MovieEntity {
+            return MovieEntity(
+                movie.id,
+                movie.title?: "",
+                movie.backdropPath?: "",
+                movie.releaseDate?: "",
+                movie.originCountry?: listOf(),
+                movie.originalLanguage?: "",
+                movie.originalName?: "",
+                movie.overview?: "",
+                movie.popularity?: 0.0,
+                movie.posterPath?: "",
+                movie.voteAverage?: 0.0,
+                movie.voteCount?: 0,
+            /*    movie.genreIds?: listOf(),*/
+                movie.isView?: false
             )
         }
     }

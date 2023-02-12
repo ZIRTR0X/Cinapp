@@ -27,11 +27,12 @@ class MainActivity : AppCompatActivity() {
             var movie = MovieFragment()
             movie.main = this
             var serie = SerieFragment()
+            serie.main = this
 
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment(this))
                 R.id.movie -> replaceFragment(movie)
-                R.id.serie -> replaceFragment(SerieFragment())
+                R.id.serie -> replaceFragment(serie)
                 R.id.search -> replaceFragment(SearchFragment(this))
                 /*else -> false*/
             }

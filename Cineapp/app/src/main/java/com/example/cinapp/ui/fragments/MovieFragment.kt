@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.viewModelScope
 import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.ui.viewModel.MovieViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,6 +47,7 @@ class MovieFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_movie, container, false)
         vm = MovieViewModel()
         vm.main = main
+        vm.setMediaList(rootView)
         return rootView
     }
 

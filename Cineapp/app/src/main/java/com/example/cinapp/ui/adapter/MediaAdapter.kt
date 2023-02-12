@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cinapp.MainActivity
@@ -15,6 +16,12 @@ import com.example.cinapp.ui.fragments.MovieFragment
 import com.example.cinapp.ui.fragments.MovieInfo
 
 class MediaAdapter(private val mediaList: LiveData<List<Media>>, private val main: MainActivity) : RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
+
+    init {
+        mediaList.observe(main, Observer {
+            notifyDataSetChanged()
+        })
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)

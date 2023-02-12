@@ -12,14 +12,19 @@ import com.example.cinapp.MainActivity
 import com.example.cinapp.R
 import com.example.cinapp.data.persistance.Entity.AppDatabase
 import com.example.cinapp.data.persistance.Entity.MovieEntity
+import com.example.cinapp.data.persistance.Entity.SerieEntity
 import com.example.cinapp.model.Media
+import com.example.cinapp.model.Serie
 import com.example.cinapp.ui.adapter.MediaAdapter
 import com.example.cinapp.ui.extensions.MovieExtensions
-import kotlinx.coroutines.*
+import com.example.cinapp.ui.extensions.SerieExtensions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MovieViewModel: ViewModel() {
+class SerieViewModel: ViewModel() {
     var medias = MutableLiveData<List<Media>>()
-    var mediasEntity = MutableLiveData<List<MovieEntity>>()
+    var mediasEntity = MutableLiveData<List<SerieEntity>>()
     @SuppressLint("StaticFieldLeak")
     lateinit var main: MainActivity;
 
@@ -30,21 +35,21 @@ class MovieViewModel: ViewModel() {
             var listMediaEntity = downloadMedia()
             var listeMedia : MutableList<Media> = mutableListOf()
             listMediaEntity.forEach() {
-                listeMedia.add(MovieExtensions.toMovie(it))
+                listeMedia.add(SerieExtensions.toSerie(it))
             }
             medias.postValue(listeMedia)
         }
-        val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view_movies)
+        val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view_series)
         val context = rootView.context
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         recyclerView.adapter = MediaAdapter(medias, main)
     }
 
 
-    suspend fun downloadMedia(): List<MovieEntity> {
+    suspend fun downloadMedia(): List<SerieEntity> {
         return withContext(Dispatchers.IO) {
             val db = AppDatabase.getInstance()
-            db.movieDAO().getAll()
+            db.serieDAO().getAll()
         }
     }
 }
