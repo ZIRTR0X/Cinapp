@@ -17,13 +17,12 @@ To use this project, you will need the following dependencies:
 
 # Installation
 To install this project on your computer, you will need :
-
-Android Studio
-An emulator or a connected Android device
-Open Android Studio and click on "Open an existing project".
-Select the project directory.
-Wait for the dependencies to be downloaded and installed.
-Run the project by pressing the "Run" button or by using the keyboard shortcut "Shift + F10".
+- Android Studio
+- An emulator or a connected Android device
+1. Open Android Studio and click on "Open an existing project".
+2. Select the project directory.
+3. Wait for the dependencies to be downloaded and installed.
+4. Run the project by pressing the "Run" button or by using the keyboard shortcut "Shift + F10".
 
 # API used
 The application uses The Movie Database (TMDb) API to get information about movies.   You can register for a free API key on the TMDb website.

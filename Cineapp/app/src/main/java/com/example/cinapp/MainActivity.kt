@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.bottomNavigation.setOnItemSelectedListener {
-            var movie = MovieFragment()
+            val movie = MovieFragment()
             movie.main = this
-            var serie = SerieFragment()
+            val serie = SerieFragment()
             serie.main = this
 
             when(it.itemId){
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.movie -> replaceFragment(movie)
                 R.id.serie -> replaceFragment(serie)
                 R.id.search -> replaceFragment(SearchFragment(this))
-                /*else -> false*/
             }
             true
         }
